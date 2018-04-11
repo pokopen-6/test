@@ -1,0 +1,7 @@
+127.0.0.1 - - [02/Apr/2018:15:36:59 +0900] "GET / HTTP/1.1" 404 1019
+0:0:0:0:0:0:0:1 - - [02/Apr/2018:15:37:05 +0900] "GET /WebProj4/ HTTP/1.1" 200 2306
+0:0:0:0:0:0:0:1 - - [02/Apr/2018:15:37:27 +0900] "POST /WebProj4/TestAction.action;jsessionid=DDD95765000A7EF439FAF0F9FD4806C4 HTTP/1.1" 200 9401
+0:0:0:0:0:0:0:1 - - [02/Apr/2018:15:40:23 +0900] "GET /WebProj4/ HTTP/1.1" 200 2086
+0:0:0:0:0:0:0:1 - - [02/Apr/2018:15:40:36 +0900] "GET /WebProj4/TestAction.action?username=reiji&password=555 HTTP/1.1" 200 418
+0:0:0:0:0:0:0:1 - - [02/Apr/2018:15:40:36 +0900] "GET /WebProj4/css/style.css HTTP/1.1" 200 1373
+0:0:0:0:0:0:0:1 - - [02/Apr/2018:15:40:48 +0900] "POST /WebProj4/TestAction.action HTTP/1.1" 200 418
