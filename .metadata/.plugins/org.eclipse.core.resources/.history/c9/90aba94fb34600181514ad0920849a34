@@ -1,0 +1,63 @@
+package com.internousdev.wood.action;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.wood.dao.ProductDetailDAO;
+import com.internousdev.wood.dto.ProductDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+
+
+public class GoBuyItemAction extends ActionSupport implements SessionAware{
+	public String result;
+	private ProductDetailDAO detailDAO = new ProductDetailDAO();
+	private ProductDTO productDTO = new ProductDTO();
+	public ArrayList<ProductDTO> productList = new ArrayList<>();
+	private String product_id;
+
+	public Map<String, Object> session;
+
+	public String execute() throws SQLException {
+		result = SUCCESS;
+		productDTO = detailDAO.getProductDetailInfo(product_id);
+		session.put("product_id", productDTO);
+
+		try {
+			productDTO = detailDAO.getProductDetailInfo(product_id);
+
+		if(productDTO != null) {
+
+			session.put("product_id", productDTO.getProduct_Id());
+			session.put("product_name",productDTO.getProduct_name());
+			session.put("product_description", productDTO.getProduct_description());
+			session.put("category_id", productDTO.getCategory_id());
+			session.put("price", productDTO.getPrice());
+			session.put("stock", productDTO.getStock());
+			session.put("image_file_path", productDTO.getImage_file_path());
+			session.put("image_file_name", productDTO.getImage_file_name());
+
+		}else{
+			return ERROR;
+		}
+
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return result;
+
+	}
+
+	public Map<String, Object> getSession(){
+		return session;
+	}
+
+
+	public void setSession(Map<String, Object> session){
+		this.session = session;
+		}
+
+}

@@ -1,0 +1,5 @@
+package com.internousdev.wood.dao;
+
+public class ProductListDAO {
+
+}

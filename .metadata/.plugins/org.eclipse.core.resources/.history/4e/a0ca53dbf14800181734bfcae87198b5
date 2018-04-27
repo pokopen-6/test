@@ -1,0 +1,76 @@
+package com.internousdev.wood.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.internousdev.wood.dto.BuyItemDTO;
+import com.internousdev.wood.dto.ProductDTO;
+import com.internousdev.wood.util.DBConnector;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BuyItemDAO extends ActionSupport {
+	private DBConnector dbConnector = new DBConnector();
+	private Connection connection = dbConnector.getConnection();
+	private BuyItemDTO buyItemDTO = new BuyItemDTO();
+
+	public BuyItemDTO getProductInfo(){
+		String sql = "SELECT id, product_name, product_price, product_description, stock, image_file_path, image_file_name FROM product_info";
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if(rs.next()){
+				buyItemDTO.setId(rs.getInt("id"));
+				buyItemDTO.setProductName(rs.getString("product_name"));
+				buyItemDTO.setProductPrice(rs.getInt("product_price"));
+				buyItemDTO.setProductDescription(rs.getString("product_descpription"));
+				buyItemDTO.setStock(rs.getInt("stock"));
+				buyItemDTO.setImageFilePath(rs.getString("image_file_path"));
+				buyItemDTO.setImageFileName(rs.getString("image_file_name"));
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return buyItemDTO;
+
+	}
+
+	public ArrayList<ProductDTO>getBuyItemInfo(String id) throws SQLException {
+		Connection con = dbConnector.getConnection();
+		ArrayList<ProductDTO> buyItemList = new ArrayList<>();
+
+		String sql =" SELECT * FROM user_info WHERE id = ?";
+
+		try {
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()){
+				ProductDTO dto = new ProductDTO();
+				dto.setProductCount(rs.getInt("product_count"));
+				buyItemList.add(dto);
+			}
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		try {
+			con.close();
+		}catch(SQLException e){
+			throw new RuntimeException(e);
+		}
+		return buyItemList;
+	}
+
+
+
+	public BuyItemDTO getBuyItemDTO(){
+		return buyItemDTO;
+	}
+
+}

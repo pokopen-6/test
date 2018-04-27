@@ -1,0 +1,127 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="imagetoolbar" content="no"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<title>商品一覧</title>
+<style type="text/css">
+	body {
+		margin:0;
+		padding:0;
+		line-height:1.6;
+		letter-spacing:1px;
+		font-family:Verdana,Helvetica,sans-serif;
+		font-size:18px;
+		color:#333;
+		background:#fff;
+		}
+	main {
+		width:100%;
+		}
+	table {
+		text-aign:center;
+		margin:0 auto;
+
+
+			}
+
+		#pp {
+			text-align:center;
+			}
+	#top {
+		width:400px;
+		margin:30px;
+		border:1px solid #333;
+		text-align:center;
+		}
+	#header {
+		width:100%;
+		height:80px;
+		background-color:black;
+		text-align:center;
+		}
+	#x {
+		float:left;
+		clear:both;
+		margin-left:15px;
+			}
+	#image {
+
+		}
+
+	#itemList {
+		foloat:left;
+		}
+
+</style>
+</head>
+<body>
+	<div id="header">
+		<div id="pr">
+		</div>
+	</div>
+	<div id="main">
+		<div id="top">
+			<p> 商  品  一  覧 </p>
+		</div>
+		<div id="pp">
+		<p>購入希望の方は、購入したい製品 横のチェックボックスにチェックを入れ、
+			個数を選択し、「購入確認」画面に移動してください。</p>
+		</div>
+		<div id="itemList">
+		<s:form action="BuyItemAction">
+		<table>
+			<s:iterator value="productList">
+			<tr>
+				<td><div id="image">
+				<img class="image" src="<s:property value='image_file_path'/>"  alt="Photo" width="500" height="350">
+				</div></td>
+				<th><div id="x">
+				<label>
+					<s:checkbox name="selectItemList" value="0" fieldValue="%{id}" theme="simple"  />製品名：<s:property value="product_name"/>
+				</label><br>
+				</div>
+				</th>
+				<td><div id="x"><s:property value="product_description"/><br></div>
+				<div id="x">個数：<select name="product_count">
+					<option value="1" selected="selected">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select><br></div>
+				<div id="x">製品価格（税込）￥ <s:property value="price" /> /個<br></div></td>
+			</tr>
+			</s:iterator>
+
+
+
+			<tr>
+				<td>
+				<s:submit value="購入確認へ" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>ホームに戻る場合は<a href='<s:url action="GoHomeAction"/>'>こちら</a>
+					　　マイページは<a href='<s:url action="MyPageAction"/>'>こちら</a></p>
+				</td>
+				</table>
+			</s:form></div></div>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts-devMode" value="true" />
+	<package name="com.internousdev.wood.action" extends="struts-default">
+
+	<action name="GoMyPageAction" class="com.internousdev.wood.action.GoMyPageAction" method="execute">
+	<result name="success">myPage.jsp</result>
+	<result name="login">login.jsp</result>
+	<result name="error">home.jsp</result>
+	</action>
+
+
+
+	<action name="CompanyAction" class="com.internousdev.wood.action.CompanyAction" method="execute">
+	<result name="success">company.jsp</result>
+	</action>
+
+	<action name="LoginAction" class="com.internousdev.wood.action.LoginAction" method="execute">
+	<result name="success">home.jsp</result>
+	<result name="login">login.jsp</result>
+
+	</action>
+
+
+
+	<action name="LogoutAction" class="com.internousdev.wood.action.LogoutAction" method="execute">
+	<result name="success">home.jsp</result>
+	</action>
+
+	<action name="GoHomeAction" class="com.internousdev.wood.action.GoHomeAction" method="execute">
+	<result name="success">home.jsp</result>
+	</action>
+
+	<action name="UserCreateAction" class="com.internousdev.wood.action.UserCreateAction" method="execute">
+	<result name="success">userCreate.jsp</result>
+	</action>
+
+	<action name="UserCreateConfirmAction" class="com.internousdev.wood.action.UserCreateConfirmAction" method="execute">
+	<result name="success">userCreateConfirm.jsp</result>
+	</action>
+
+	<action name="UserCreateCompleteAction" class="com.internousdev.wood.action.UserCreateCompleteAction" method="execute">
+	<result name="success">userCreateComplete.jsp</result>
+	</action>
+
+	<action name="GoBuyItemAction" class="com.internousdev.wood.action.GoBuyItemAction" method ="execute">
+	<result name="success">buyItem.jsp</result>
+
+	</action>
+
+	<action name="BuyItemAction" class="com.internousdev.wood.action.BuyItemAction" method="execute">
+	<result name="success">buyItemConfirm.jsp</result>
+	<result name="error">error.jsp</result>
+	</action>
+
+	<action name="BuyItemConfirmAction" class="com.internousdev.wood.action.BuyItemConfirmAction" method="execute">
+	<result name="success">buyItemComplete.jsp</result>
+	<result name="back">buyItem.jsp</result>
+	</action>
+
+	<action name="BuyItemCompleteAction" class="com.internousdev.wood.action.BuyItemCompleteAction" method="execute">
+	<result name="success">home.jsp</result>
+	</action>
+
+	<action name="MyPageAction" class="com.internousdev.wood.action.MyPageAction" method="execute">
+	<result name="success">myPage.jsp</result>
+	</action>
+
+</package>
+</struts>

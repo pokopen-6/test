@@ -19,7 +19,7 @@ public class MyPageAction extends ActionSupport implements SessionAware {
 		//履歴を削除しない場合
 		if(deleteFlg == null){
 			String item_transaction_id = session.get("id").toString();
-			String user_master_id = session.get("login_user_id").toString();
+			String user_master_id = session.get("login_id").toString();
 
 			myPageDTO = myPageDAO.getMyPageUserInfo(item_transaction_id,user_master_id);
 

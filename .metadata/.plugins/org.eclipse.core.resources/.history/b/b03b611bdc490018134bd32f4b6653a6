@@ -1,0 +1,255 @@
+SET names utf8;
+SET foreign_key_checks = 0;
+DROP database if EXISTS wood;
+CREATE database if NOT EXISTS wood;
+
+use wood;
+
+
+-- -------会員情報---------
+CREATE TABLE user_info(
+id int primary key not null auto_increment, -- ID
+user_id varchar(16) unique key not null, -- ユーザーID
+password varchar(16) not null, -- パスワード
+family_name varchar(32) not null,-- 姓
+first_name varchar(32) not null,-- 名
+family_name_kana varchar(32) not null,-- 姓かな
+first_name_kana varchar(32) not null,-- 名かな
+sex tinyint not null default 0,-- 性別
+user_mail varchar(32) not null,-- メールアドレス
+user_tel varchar(13) not null,-- 電話番号
+postal_code varchar(8) not null,-- 郵便番号
+user_address varchar(50) not null,-- 住所
+status tinyint not null default 1,-- ステータス（0：無効、1：有効）
+logined tinyint not null default 0, -- ログインフラグ（0:未ログイン,1:ログイン済み)
+regist_date datetime,-- 登録日時
+updated_date datetime -- 更新日時
+);
+
+-- --カテゴリマスタテーブル------
+create table m_category(
+id int primary key not null auto_increment,-- ID
+category_id int not null unique key,-- カテゴリID
+category_name varchar(20) not null unique key,-- カテゴリ名
+category_description varchar(100),-- カテゴリ詳細
+insert_date datetime not null,-- 登録日
+update_date datetime -- 更新日
+);
+
+
+-- ----製品情報テーブル-------
+create table product_info(
+id int primary key not null auto_increment,-- ID
+product_id int unique key not null,-- 製品ID
+product_name varchar(100) unique key not null,-- 製品名
+product_name_kana varchar(100) unique key not null,-- 製品名かな
+product_description varchar(255) not null,-- 製品詳細
+category_id int not null,-- カテゴリID
+product_price int,-- 製品価格
+stock int,-- 在庫
+image_file_path varchar(100),-- 画像ファイルパス
+image_file_name varchar(100),-- 画像ファイル名
+status tinyint not null default 0,-- ステータス（0:無効、1:有効）
+regist_date datetime,-- 登録日時
+update_date datetime-- 更新日時
+);
+
+-- -カート情報---
+create table cart_info(
+id int primary key not null auto_increment,-- ID
+user_id varchar(16) not null,-- ユーザID
+temp_user_id varchar(128),-- 仮ユーザーID
+product_id int not null,-- 製品ID
+product_count int not null,-- 個数
+price int not null,-- 金額
+regist_date datetime,-- 登録日時
+update_date datetime-- 更新日時
+);
+
+
+-- -------購入情報------------
+create table purchase_history_info(
+id int not null primary key auto_increment,-- ID
+user_id varchar(16) not null,-- ユーザー ID
+product_id int not null,-- 製品ID
+product_count int not null,-- 購入個数
+price int not null,-- 合計金額
+regist_date datetime,-- 登録日
+update_date datetime-- 更新日
+);
+
+
+-- -宛先情報---
+create table destination_info(
+id int primary key not null auto_increment,-- ID
+user_id varchar(16) not null,-- ユーザーID
+family_name varchar(32) not null,-- 姓
+first_name varchar(32) not null,-- 名
+user_mail varchar(32) not null,-- メールアドレス
+user_tel varchar(13) not null,-- 電話番号
+postal_code varchar(8) not null,-- 郵便番号
+user_address varchar(50) not null,-- 住所
+regist_date datetime,-- 登録日
+update_date datetime-- 更新日
+);
+
+
+
+-- ------情報登録(ユーザー情報↓------------
+insert into user_info(
+user_id,-- ユーザーID
+password,-- パスワード
+family_name,-- 姓
+first_name,-- 名
+family_name_kana,-- 姓かな
+first_name_kana,-- 名かな
+sex,-- 性別
+user_mail,-- メールアドレス
+user_tel,-- 電話番号
+postal_code,-- 郵便番号
+user_address,-- 住所
+regist_date -- 登録日時
+)values (
+"shigeru",
+"123",
+"田中",
+"茂",
+"たなか",
+"しげる",
+0,
+"shigeru.t@gmail.com",
+"080-1111-2222",
+"1020075",
+"東京都千代田区三番町",
+now()
+);
+-- -情報登録（カテゴリ情報）----
+insert into m_category(
+category_id,-- カテゴリID
+category_name,-- カテゴリ名
+category_description,-- カテゴリ詳細
+insert_date,-- 登録日
+update_date -- 更新日
+)values (
+1,
+"chairs",
+"椅子",
+cast('2018-04-01'as date),
+cast('2018-04-01' as date)
+),
+
+(
+2,
+"doors",
+"建具",
+cast('2018-04-01'as date),
+cast('2018-04-01' as date)
+),
+
+(
+3,
+"tables",
+"テーブル",
+cast('2018-04-01'as date),
+cast('2018-04-01' as date)
+),
+
+(
+4,
+"kitchen",
+"キッチン",
+cast('2018-04-01'as date),
+cast('2018-04-01' as date)
+);
+
+-- --情報登録（製品情報）----
+insert into product_info(
+product_id,-- 製品ID
+product_name,-- 製品名
+product_name_kana,-- 製品名かな
+product_description,-- 製品詳細
+category_id,-- カテゴリID
+product_price,-- 製品価格
+stock,-- 在庫
+image_file_path, -- 画像ファイルパス
+image_file_name, -- 画像ファイル名
+status, -- ステータス（0:無効、1:有効）
+regist_date, -- 登録日時
+update_date -- 更新日時
+)values (
+1,
+"Yチェア",
+"わいちぇあ",
+"オーソドックスな椅子。なめらかな木の質感を堪能ください。",
+1,
+8000,
+20,
+"./images/ychair.jpg",
+"ychair.jpg",
+1,
+now(),
+now()
+), (
+2,
+"HIKIDO",
+"ひきど",
+"鮮やかな木目がお部屋にアクセントを与えてくれます。",
+2,
+18000,
+5,
+"./images/hikido.jpg",
+"hikido.jpg",
+1,
+now(),
+now()
+), (
+3,
+"ダイニングテーブル",
+"だいにんぐてーぶる",
+"存在感と共に木のぬくもりを感じてください。",
+3,
+150000,
+5,
+"./images/table.jpeg",
+"table.jpg",
+1,
+now(),
+now()
+), (
+4,
+"オリジナルウッドキッチン",
+"おりじなるうっどきっちん",
+"木の質感を前面に押し出した自信作です。",
+4,
+500000,
+5,
+"./images/kitchen.jpg",
+"kitchen.jpg",
+1,
+now(),
+now()
+);
+
+-- -宛先情報登録----
+insert into destination_info(
+user_id,-- ユーザーID
+family_name,-- 姓
+first_name,-- 名
+user_mail,-- メールアドレス
+user_tel,-- 電話番号
+postal_code,-- 郵便番号
+user_address,-- 住所
+regist_date-- 登録日
+)values (
+"taro",
+"田中",
+"太郎",
+"taro.t@gmail.com",
+"080-1111-2222",
+"1020075",
+"東京都千代田区三番町",
+now()
+);
+
+
+

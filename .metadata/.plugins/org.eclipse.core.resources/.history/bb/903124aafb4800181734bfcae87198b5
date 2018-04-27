@@ -1,0 +1,75 @@
+package com.internousdev.wood.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.internousdev.wood.dto.BuyItemDTO;
+import com.internousdev.wood.util.DBConnector;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BuyItemDAO extends ActionSupport {
+	private DBConnector dbConnector = new DBConnector();
+	private Connection connection = dbConnector.getConnection();
+	private BuyItemDTO buyItemDTO = new BuyItemDTO();
+
+	public BuyItemDTO getProductInfo(){
+		String sql = "SELECT id, product_name, product_price, product_description, stock, image_file_path, image_file_name FROM product_info";
+
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			if(rs.next()){
+				buyItemDTO.setId(rs.getInt("id"));
+				buyItemDTO.setProductName(rs.getString("product_name"));
+				buyItemDTO.setProductPrice(rs.getInt("product_price"));
+				buyItemDTO.setProductDescription(rs.getString("product_descpription"));
+				buyItemDTO.setStock(rs.getInt("stock"));
+				buyItemDTO.setImageFilePath(rs.getString("image_file_path"));
+				buyItemDTO.setImageFileName(rs.getString("image_file_name"));
+			}
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return buyItemDTO;
+
+	}
+
+	public int userChoose(List<String> selectItemList) throws SQLException {
+		DBConnector db =new DBConnector();
+		Connection con = db.getConnection();
+
+
+		String sql =" SELECT * FROM user_info WHERE user_id = ?";
+
+
+		PreparedStatement ps;
+		int result = 0;
+
+		try {
+			ps = con.prepareStatement(sql);
+
+			for(int i = 0; i< selectItemList.size(); i++){
+				String buyItemId = selectItemList.get(i);
+				ps.setString(1, buyItemId);
+				result += ps.executeUpdate();
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			con.close();
+		}
+		return result;
+	}
+
+
+
+	public BuyItemDTO getBuyItemDTO(){
+		return buyItemDTO;
+	}
+
+}

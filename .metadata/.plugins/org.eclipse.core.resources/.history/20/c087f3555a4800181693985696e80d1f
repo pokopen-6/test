@@ -1,0 +1,137 @@
+package com.internousdev.wood.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.wood.dao.ProductDetailDAO;
+import com.internousdev.wood.dto.ProductDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+
+public class ProductDetailAction extends ActionSupport implements SessionAware {
+
+	public Map<String, Object> session;
+
+	private String id;
+	private String product_id;
+	private String category_name;
+	private String stock;
+	private String error;
+	private int insertFlg;
+	private int price;
+	private int category_id;
+
+	public ProductDTO detail = new ProductDTO();
+	public List<ProductDTO> productsList = new ArrayList<ProductDTO>();
+	private ProductDetailDAO productDetailDAO = new ProductDetailDAO();
+
+	public String execute(){
+		try {
+
+			detail = productDetailDAO.getProductDetailInfo(product_id);
+			if(detail != null){
+				session.put("d_image_file_path", detail.getImage_file_path());
+				session.put("d_product_name", detail.getProduct_name());
+				session.put("d_product_description", detail.getProduct_description());
+				session.put("d_product_price", detail.getProductPrice());
+				session.put("d_product_id", detail.getCategory_id());
+			}else{
+				return ERROR;
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		String result = SUCCESS;
+		return result;
+	}
+@Override
+	public void setSession(Map<String, Object> session){
+	this.session = session;
+	}
+
+	public Map<String, Object> getSession(){
+		return this.session;
+	}
+
+	public String getProduct_id(){
+		return product_id;
+	}
+	public void setProduct_id(String product_id){
+		this.product_id = product_id;
+	}
+	public int getPrice(){
+		return price;
+	}
+	public void setPrice(int price){
+		this.price = price;
+	}
+
+	public List<ProductDTO> getProductsList(){
+		return productsList;
+	}
+	public void setProductsList(List<ProductDTO> productsList){
+		this.productsList = productsList;
+	}
+	public ProductDetailDAO getProductDetailDAO(){
+		return productDetailDAO;
+	}
+	public void setProductDetailDAO(ProductDetailDAO productDetailDAO){
+		this.productDetailDAO = productDetailDAO;
+	}
+
+	public String getId(){
+		return id;
+	}
+	public void setId(String id){
+		this.id = id;
+	}
+	public String getError(){
+		return error;
+	}
+	public void setError(String error){
+		this.error = error;
+	}
+	public ProductDTO getDetail(){
+		return detail;
+	}
+	public void setDetail(ProductDTO detail){
+		this.detail = detail;
+	}
+
+	public int getCategory_id(){
+		return category_id;
+	}
+	public void setCategory_id(int category_id){
+		this.category_id = category_id;
+	}
+
+	public String getCategory_name(){
+		return category_name;
+	}
+	public void setCategory_name(String category_name){
+		this.category_name = category_name;
+	}
+
+	public String getStock(){
+		return stock;
+	}
+	public void setStock(String stock){
+		this.stock = stock;
+	}
+
+	public int getInsertFlg(){
+		return insertFlg;
+	}
+	public void setInsertFlg(int insertFlg){
+		this.insertFlg = insertFlg;
+	}
+
+
+
+
+
+
+}

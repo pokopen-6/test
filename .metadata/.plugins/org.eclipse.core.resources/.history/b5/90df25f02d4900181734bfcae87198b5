@@ -1,0 +1,102 @@
+package com.internousdev.wood.action;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.wood.dao.BuyItemDAO;
+import com.internousdev.wood.dto.BuyItemDTO;
+import com.internousdev.wood.dto.ProductDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+
+public class BuyItemAction extends ActionSupport implements SessionAware {
+	public Map<String, Object>session;
+	private int productCount;
+	private int price;
+	//チェックボックスの値
+	private ArrayList<BuyItemDTO> selectItemList;
+	private List<String> selectIteList;
+	//購入製品情報取得DAO
+	private BuyItemDAO buyItemDAO = new BuyItemDAO();
+	public String message;
+	//buyItem.jspでチェックした時のフラグ
+	private String selectFlg;
+
+	ArrayList<ProductDTO> productList = new ArrayList<>();
+
+	public String execute() throws SQLException {
+
+		String result = SUCCESS;
+		session.get("userId").toString();
+
+		//合計金額の計算
+		session.put("product_count", productCount);
+		session.put("price", price);
+		int intCount = Integer.parseInt(session.get("product_count").toString());
+		int intPrice = Integer.parseInt(session.get("price").toString());
+		session.put("price", intCount * intPrice);
+
+
+		//①チェックボックス選択情報の取得
+		//jspから引っ張ったselectItemList
+		/*String productName = session.get("product_name").toString();
+		if(selectFlg == null){
+			//DAOメソッド
+			selectItemList = buyItemDAO.getSelectItemInfo(productName);
+			//iterator でまわす
+			Iterator<BuyItemDTO> iterator = selectItemList.iterator();
+			int res = buyItemDAO.getSelectItemInfo(productName);
+			if(!iterator.hasNext()){
+				this.selectItemList = null;
+				}
+
+			}*/
+		return result;
+		}
+
+		public void userChoose() throws SQLException {
+		String userId =session.get("user_id").toString();
+		String result = SUCCESS;
+		if(selectItemList == null){
+			setMessage("チェックを入れてクレメンス");
+		}
+			int res = buyItemDAO.userChoose(selectItemList);
+			if(res > 0){
+				selectItemList = BuyItemDAO.userChoose(userId);
+
+				// ↓iteratorで廻してあげる。iteratorはnewする必要がなく、iterator()を呼び出せばよい。
+				Iterator<BuyItemDTO> it = selectItemList.iterator();
+
+				if (!(it.hasNext())) {
+					historyList = null;
+				}
+			}
+			return result;
+		}
+
+
+
+	public String getMessage(){
+		return message;
+	}
+	public void setMessage(String message){
+		this.message = message;
+	}
+
+
+	public void setProductCount(int productCount){
+		this.productCount = productCount;
+	}
+
+
+	@Override
+	public void setSession(Map<String, Object>session){
+		this.session = session;
+	}
+
+}

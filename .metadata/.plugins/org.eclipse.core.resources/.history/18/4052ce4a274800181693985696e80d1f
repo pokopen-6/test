@@ -1,0 +1,45 @@
+package com.internousdev.wood.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import com.internousdev.wood.dto.ProductDTO;
+import com.internousdev.wood.util.DBConnector;
+
+public class ProductListDAO {
+	public ArrayList<ProductDTO> getProductInfo() throws SQLException {
+		ArrayList<ProductDTO> productList = new ArrayList<>();
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+
+		String sql = "SELECT * FROM product_info WHERE status = 1 ORDER BY Product_id ASC";
+		try {
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+
+		while(rs.next()){
+			ProductDTO dto = new ProductDTO();
+
+			dto.setId(rs.getInt("id"));
+			dto.setProduct_id(rs.getInt("product_id"));
+			dto.setProduct_name(rs.getString("product_name"));
+			dto.setProduct_descrption(rs.getString("product_description"));
+			dto.setCategory_id(rs.getInt("category_id"));
+			dto.setPrice(rs.getInt("product_price"));
+			dto.setImage_file_path(rs.getString("image_fi_path"));
+			dto.setImage_file_name(rs.getString("image_file_name"));
+			dto.setStock(rs.getInt("stock"));
+			productList.add(dto);
+			}
+			} catch(Exception e){
+				throw new RuntimeException (e);
+			}finally {
+			con.close();
+		}
+		return productList;
+	}
+}
+
