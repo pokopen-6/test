@@ -1,0 +1,12 @@
+$(function() {
+
+
+  $('#textBox').on('blur', function(){
+    var num = $(this).val();
+    num = num.replace(/(\d)(?=(\d\d\d)+$)/g, '$1,');
+    $(this).val(num);
+  });
+
+
+
+});

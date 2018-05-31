@@ -1,0 +1,45 @@
+package com.internousdev.vague.action;
+
+import com.opensymphony.xwork2.ActionSupport;
+import java.util.Map;
+import org.apache.struts2.interceptor.SessionAware;
+import com.internousdev.vague.dao.UserCreateDAO;
+import java.sql.SQLException;
+
+public class UserCreateCompleteAction extends ActionSupport implements SessionAware{
+
+	private int Id;
+	private String userId;
+	private String password;
+	private String familyName;
+	private String firstName;
+	private String familyNameKana;
+	private String firstNameKana;
+	private int sex;
+	private String email;
+	private int status;
+	private int loginFlg;
+	private int mFlg;
+	private int question;
+	private String answer;
+
+	public Map<String, Object> session;
+	private UserCreateDAO dao = new UserCreateDAO();
+
+	public String execute() throws SQLException {
+		dao.createUserInfo(session.get("userId").toString(),
+				session.get("password").toString(),
+				session.get("familyName").toString(),
+				session.get("firstName").toString(),
+				session.get("familyNameKana").toString(),
+				session.get("firstNameKana").toString(),
+				Integer.parseInt((session.get("sex")).toString()),
+				session.get("email".toString());
+
+		String result = SUCCESS;
+
+		return result;
+
+	}
+
+}

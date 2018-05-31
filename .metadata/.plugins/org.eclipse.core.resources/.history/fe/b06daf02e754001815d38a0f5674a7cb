@@ -1,0 +1,47 @@
+package com.internousdev.vague.action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internousdev.vague.dto.LoginUserDTO;
+import com.internousdev.vague.util.InputChecker;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UserCreateConfirmAction extends ActionSupport implements SessionAware{
+	public Map<String, Object> session;
+
+	private Map<String, String> errorMsg;
+
+
+	@Override
+	public String execute(){
+
+		if(session.containsKey("LoginUserDTO")){
+
+			return ERROR;
+
+		}
+
+		String result = SUCCESS;
+
+		LoginUserDTO loginUserDTO = (LoginUserDTO)session.get("LoginUserDTO");
+
+
+
+
+	}
+@Override
+public void setSession(Map<String, Object> session){
+	this.session = session;
+}
+public Map<String, String> getErrorMsg() {
+	return errorMsg;
+}
+public void setErrorMsg(Map<String, String> errorMsg) {
+	this.errorMsg = errorMsg;
+}
+public Map<String, Object> getSession() {
+	return session;
+}
+}

@@ -1,0 +1,87 @@
+package com.internous.wheels.dto;
+
+public class LoginDTO {
+
+	private String userId;
+	private String password;
+	private int sex;
+	private String userAddress;
+	private String postalCode;
+	private String telNumber;
+	private String familyName;
+	private String firstName;
+	private String familyNameKana;
+	private String firstNameKana;
+	private String insertDate;
+
+
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public int getSex() {
+		return sex;
+	}
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+	public String getPostalCode() {
+		return postalCode;
+	}
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+	public String getTelNumber() {
+		return telNumber;
+	}
+	public void setTelNumber(String telNumber) {
+		this.telNumber = telNumber;
+	}
+	public String getFamilyName() {
+		return familyName;
+	}
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getFamilyNameKana() {
+		return familyNameKana;
+	}
+	public void setFamilyNameKana(String familyNameKana) {
+		this.familyNameKana = familyNameKana;
+	}
+	public String getFirstNameKana() {
+		return firstNameKana;
+	}
+	public void setFirstNameKana(String firstNameKana) {
+		this.firstNameKana = firstNameKana;
+	}
+	public String getInsertDate() {
+		return insertDate;
+	}
+	public void setInsertDate(String insertDate) {
+		this.insertDate = insertDate;
+	}
+
+
+
+}

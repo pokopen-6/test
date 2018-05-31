@@ -1,0 +1,22 @@
+/**
+ *
+ */
+
+$(function(){
+
+	$('.product-box').hover(
+	function(){
+
+		$('.product-box-top').css('width','100%');
+
+	},
+	function(){
+
+
+
+	});
+
+
+
+
+});

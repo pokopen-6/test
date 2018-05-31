@@ -1,0 +1,37 @@
+package com.internousdev.vague.action;
+
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.opensymphony.xwork2.ActionSupport;
+import com.internousdev.vague.dao.UserCreateDAO;
+import com.internousdev.vague.util.InputChecker;
+
+public class UserCreateConfirmAction extends ActionSupport implements SessionAware{
+	public Map<String, Object> session;
+	@Override
+	public String execute(){
+		if(userId == null){
+			return ERROR;
+		}
+
+		String result = SUCCESS;
+
+		InputChecker inp = new InputChecker();
+
+		//userIDチェック
+		UserCreateDAO dao = new UserCreateDAO();
+
+		//ブランク
+		if(userId.equals("")){
+			errorId = inp.getClass("familyNameChk");
+		}
+
+
+	}
+@Override
+public void setSession(Map<String, Object> session){
+	this.session = session;
+}
+}

@@ -1,0 +1,72 @@
+set names utf8;
+set foreign_key_checks = 0;
+drop database if exists wheels;
+
+create database if not exists wheels DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+use wheels;
+
+/*
+*会員情報テーブル
+*/
+
+drop table if exists user_info;
+
+create table user_info(
+	id int not null primary key auto_increment,
+	user_id varchar(16) not null unique,
+	password varchar(16) not null ,
+	family_name varchar(32) not null,
+	first_name varchar(32) not null,
+	family_name_kana varchar(32) not null,
+	first_name_kana varchar(32) not null,
+	sex tinyint default 0,
+	email varchar(50) not null,
+	postal_code varchar(7) not null,
+	user_address varchar(50) not null,
+	tel_number varchar(13) not null,
+	status tinyint default 0,
+	regist_date datetime not null,
+	update_date datetime
+);
+
+/*
+ * 商品情報テーブル
+ */
+
+drop table if exists product_info;
+
+create table product_info(
+	id int not null primary key auto_increment,
+	product_id int not null unique,
+	product_name varchar(100) not null unique,
+	product_description varchar(255) not null,
+	category_id int not null unique,
+	product_stock int not null,
+	price int,
+	status tinyint default 0,
+	image_file_path varchar(100),
+	image_file_name varchar(100),
+	release_company varchar(100) not null,
+	regist_date datetime,
+	update_date datetime
+);
+
+/*
+ * ユーザー情報テーブルに情報挿入
+ */
+
+INSERT INTO user_info(user_id,password,family_name,first_name,family_name_kana,first_name_kana,sex,email,postal_code,user_address,tel_number,status,regist_date)
+values("guest","guest","田中","太郎","たなか","たろう",0,"guestuser@yahoo.com","1000001","東京都千代田区一番町1-2-3","09055556666",1,now());
+
+/*
+ * 商品情報テーブルに情報挿入
+ */
+
+INSERT INTO product_info(product_id,product_name,product_description,product_stock,price,image_file_path,image_file_name,release_company,status,regist_date)
+VALUES(1,"RS6 EQUIPE","",20,185000,"images/equipe.jpg","equipe.jpg","ブリヂストン",1,now()),
+(2,"CAAD12 105","",20,190000,"images/canondale.jpg","canondale.jpg","キャノンデール",1,now()),
+(3,"ER-01 105","",20,190000,"images/carrera.jpg","carrera.jpg","カレラ",1,now()),
+(4,"CONTEND SL 1 DISC","",20,155000,"images/contend.jpg","contend.jpg","ジャイアント",1,now()),
+(5,"PRIMA","",20,155000,"images/prima.jpg","prima.jpg","ピナレロ",1,now());
+

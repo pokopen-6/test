@@ -1,0 +1,5 @@
+package com.internousdev.wheels.dao;
+
+public class ProductDetailsDAO {
+
+}

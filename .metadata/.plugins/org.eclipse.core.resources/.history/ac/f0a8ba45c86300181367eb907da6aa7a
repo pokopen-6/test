@@ -1,0 +1,64 @@
+package com.internous.wheels.dto;
+
+public class BuyItemDTO {
+
+	private int productId;
+	private String productName;
+	private String productDescription;
+	private String releaseCompany;
+	private String price;
+	private int productCount;
+	private String insertDate;
+	private String userId;
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getProductDescription() {
+		return productDescription;
+	}
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+	public String getReleaseCompany() {
+		return releaseCompany;
+	}
+	public void setReleaseCompany(String releaseCompany) {
+		this.releaseCompany = releaseCompany;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public int getProductCount() {
+		return productCount;
+	}
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
+	}
+	public String getInsertDate() {
+		return insertDate;
+	}
+	public void setInsertDate(String insertDate) {
+		this.insertDate = insertDate;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+
+}

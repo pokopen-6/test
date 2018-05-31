@@ -1,0 +1,5 @@
+package com.internous.wheels.dao;
+
+public class BuyItemCompleteDAO {
+
+}

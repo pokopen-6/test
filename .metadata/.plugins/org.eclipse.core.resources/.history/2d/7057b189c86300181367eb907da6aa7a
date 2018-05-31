@@ -1,0 +1,13 @@
+package com.internous.wheels.dto;
+
+public class MyPageDTO {
+	private String userId;
+	private String password;
+	private String familyName;
+	private String firstName;
+	private String familyNameKana;
+	private String firstNameKana;
+	private int sex;
+	private String email;
+	private String userAddress;
+}

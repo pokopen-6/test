@@ -1,0 +1,8 @@
+.master-list-outer {
+	text-align : left;
+}
+
+
+.master-list {
+	display : inline-block;
+}

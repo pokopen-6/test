@@ -1,0 +1,48 @@
+/**
+ *
+ */
+
+$(function(){
+
+	$('.product-box').hover(
+	function(){
+
+		$(this).find('.product-box-top').css('width','100%');
+		$(this).find('.product-box-left').css('height','100%');
+		$(this).find('.product-box-right').css('height','100%');
+		$(this).find('.product-box-bottom').css('width','100%');
+
+	},
+	function(){
+
+		$(this).find('.product-box-top').stop(true).animate({
+
+			'width' : '0%'
+
+		},300);
+
+		$(this).find('.product-box-left').stop(true).animate({
+
+			'height' : '0%'
+
+		},300);
+
+		$(this).find('.product-box-right').stop(true).animate({
+
+			'height' : '0%'
+
+		},300);
+
+		$(this).find('.product-box-bottom').stop(true).animate({
+
+			'width' : '0%'
+
+		},300);
+
+
+	});
+
+
+
+
+});

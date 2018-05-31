@@ -1,0 +1,5 @@
+package com.internous.wheels.dto;
+
+public class MyPageDTO {
+
+}

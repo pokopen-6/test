@@ -1,0 +1,278 @@
+@CHARSET "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/mplus1p.css);
+
+
+/*======== 商品一覧のcss ===========*/
+
+
+
+.pages {
+	text-align:right;
+	font-size:20px;
+}
+
+.product-box-outer {
+
+	text-align : left;
+
+
+}
+
+.product-box {
+	position: relative;
+    top:0;
+    left: 0;
+	width : 30%;
+
+	display : inline-block;
+	transition:all 0.5s;
+	margin: 30px 5px 30px 5px;
+	padding : 10px;
+	text-align:center;
+
+}
+
+.product-box-top {
+
+	width : 0%;
+	height : 0px;
+
+	position : absolute;
+	top : 0px;
+	left : 0px;
+
+	border-top : 2px solid #364e96;
+
+}
+
+.product-box-left {
+
+	width : 0px;
+	height : 0%;
+
+	position : absolute;
+	bottom : 0px;
+	left : 0px;
+
+	border-left : 2px solid #364e96;
+
+}
+
+.product-box-right {
+
+	width : 0px;
+	height : 0%;
+
+	position : absolute;
+	top : 0px;
+	right : 0px;
+
+	border-right : 2px solid #364e96;
+
+}
+
+.product-box-bottom {
+
+	width : 0%;
+	height : 0px;
+
+	position : absolute;
+	bottom : 0px;
+	right : 0px;
+
+	border-bottom : 2px solid #364e96;
+
+}
+
+
+.product-box a {
+
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height:100%;
+	width: 100%;
+
+}
+.product-box:hover {
+
+	box-shadow:6px 8px #dcdcdc;
+	top:-10px;left:-10px;
+
+	transition:all 0.5s;
+}
+
+
+.proName {
+
+	font-size : 20px;
+}
+
+.proName2 {
+	font-size:14px;
+}
+
+.proPrice {
+	font-size:20px;
+}
+.pageNum {
+	font-size:15px;
+	color:#1e90ff;
+}
+
+.center {
+	clear:both;
+	font-size:20px;
+}
+
+.page-number {
+	color:blue;
+}
+
+.error-msg {
+	text-align:center;
+	color:red;
+	width:100%;
+}
+
+
+/*========= 商品詳細のcss ==========*/
+
+.detail-box-wrapper {
+
+	text-align : center;
+
+}
+
+.detail-box-left {
+
+	display : inline-block;
+	vertical-align : top;
+	margin-left:5px;
+}
+
+.detail-box-left img {
+
+	vertical-align : middle;
+
+}
+
+.detail-box {
+	margin-left:15px;
+	position: relative;
+	width:50%;
+    top:0;
+    left: 0;
+	display:inline-block;
+
+
+}
+
+.detail-image {
+
+	background-color:gray;
+	width:auto;
+	height:150px;
+	objectfit:contain;
+}
+#detailName {
+	text-align : left;
+	font-size:30px;
+	border-left:6px solid #00008b;
+}
+#detailName2 {
+	text-align : left;
+	font-size:20px;
+}
+
+
+#detailPrice {
+	text-align : right;
+	font-size:30px;
+}
+
+.cart {
+	text-align : right;
+
+}
+
+input[type="submit"] {
+    position: relative;
+    text-align:right;
+    border-bottom:#364e96;
+    margin: 0 auto;
+    margin-left:360px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+	background-color:#00008b;
+    font-size: 20px;
+}
+
+input[type="submit"]:hover {
+	border-bottom:#dcdcdc;
+
+	}
+
+#description-box {
+	border:2px solid black;
+	padding:5px;
+}
+
+.detail-info {
+	text-align:left;
+}
+
+.suggest-box-outer {
+	width:100%;
+	text-align:left;
+}
+
+
+.suggest-box {
+	text-align : center;
+	padding:5px 0 5px 0;
+	width : 25%;
+	height:auto;
+	margin : 20px 35px 20px 35px;
+	display : inline-block;
+	border:2px solid #00008b;
+	border-radius:1em;
+	box-shadow:6px 8px #dcdcdc;
+}
+
+#sugName {
+	font-size:18px;
+}
+
+#sugName2 {
+	font-size:12px;
+}
+#sugPrice {
+	font-size:18px;
+}
+.empReview {
+	text-align:center;
+}
+
+.reviewBox {
+	width:50%;
+	border-left:8px solid  #00008b;
+	margin:20px;
+	float:center;
+	padding:10px;
+	background-color:#87ceeb;
+
+}
+
+.stars img {
+	width:20px;
+	height:20px;
+}
+
+h3 {
+
+	border-left:6px solid #00008b;
+	margin:30px 0 30px 30px;
+}
+

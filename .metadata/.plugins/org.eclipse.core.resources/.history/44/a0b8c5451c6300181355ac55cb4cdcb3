@@ -1,0 +1,50 @@
+package com.internous.wheels.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.internous.wheels.dao.LoginDAO;
+import com.internous.wheels.dto.LoginDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class LoginAction extends ActionSupport implements SessionAware  {
+
+	private String userId;
+	private String password;
+	private String familyName;
+	private String firstName;
+	private String familyNameKana;
+	private String firstNameKana;
+	private String email;
+	private String telNumber;
+	private String userAddress;
+	private Map<String,Object> session;
+
+	public String execute() throws SQLException {
+		String result = "login";
+		LoginDAO loginDAO = new LoginDAO();
+		LoginDTO loginDTO = new LoginDTO();
+
+		if(userId == null) {
+			return "login";
+		}
+		if(!userId.equals("")){
+			loginDTO = loginDAO.select(userId, password);
+
+			if(userId.equals(loginDTO.getUserId())&& password.equals(loginDTO.getPassword())){
+				loginDAO.login(loginDTO);
+				result = SUCCESS;
+
+				session.put("userId", loginDTO.getUserId());
+				session.put("firstName", loginDTO.getFamilyName());
+				session.put("loginFlg", true);
+
+			}
+		}
+
+		return result;
+	}
+
+}

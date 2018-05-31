@@ -1,0 +1,9 @@
+package com.internous.wheels.dao;
+
+import com.internous.wheels.dto.ProductDTO;
+import java.sql.Connection;
+import java.sql.ResultSet;
+
+public class ProductListDAO {
+
+}

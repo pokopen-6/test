@@ -1,0 +1,30 @@
+/**
+ *
+ */
+
+$(function(){
+
+	$('.product-box').hover(
+	function(){
+
+		$(this).find('.product-box-top').css('width','100%');
+		$(this).find('.product-box-left').css('height','100%');
+		$(this).find('.product-box-right').css('height','100%');
+		$(this).find('.product-box-bottom').css('width','100%');
+
+	},
+	function(){
+
+		$(this).find('.product-box-top').animate({
+
+			'width' : '0%';
+
+		},500);
+
+
+	});
+
+
+
+
+});

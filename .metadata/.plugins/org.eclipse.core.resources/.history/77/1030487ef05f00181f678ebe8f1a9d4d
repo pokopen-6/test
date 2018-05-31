@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+
+
+.container {
+	font-size:15px;
+}
+
+.box {
+	width:100%;
+	background-color:white;
+}
+
+.container h3 {
+	font-size:25px;
+	letter-spacing:3px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+
+
+.container p {
+	font-size:15px;
+	margin-left: auto;
+	margin-right: auto;
+	width:450px;
+	padding-left:50px;
+}
+
+
+.back p {
+	font-size:15px;
+}
+
+
+#form1 {
+	width: 100%;
+	text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form2 {
+	width: 100%;
+
+    margin-left: 15%;
+    margin-right: auto;
+    padding-right:240px;
+}
+
+
+.fullName {
+	display:flex;
+}
+
+
+.fullName1 {
+	 display:flex;
+	width:auto;
+}
+
+
+.text {
+	padding-left:80px;
+}
+
+
+.text span {
+	padding-left:80px;
+}
+
+
+.firstName {
+	padding-left:90px;
+}
+
+
+.firstNameKana {
+	padding-left:75px;
+}
+
+
+.name {
+	text-align:center;
+}
+
+
+.nameKana {
+	margin-top:20px;
+	display:flex;
+}
+
+
+.form-text {
+	margin-top:15px;
+}
+
+
+.error {
+	color:red;
+	display:flex;
+}
+
+
+.error2 {
+	color:red;
+	width:400px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.buttom {
+	display:flex;
+	padding-left:100px;
+}
+
+
+
+

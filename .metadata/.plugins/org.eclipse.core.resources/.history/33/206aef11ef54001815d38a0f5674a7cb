@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- <constant name="struts.ui.theme" value="simple" />  -->
+	<!-- 開発者モード(デバッグしたい時にはコメント外してください。ユーザーのエラーページが無効にできます) -->
+	<constant name="struts.devMode" value="true" />
+	<package name="com.internousdev.vague.action" extends="struts-default">
+
+		<!-- 田中担当 -->
+		<!-- ログインAction -->
+		<action name="LoginAction" class="com.internousdev.vague.action.LoginAction" method="execute">
+			<result name="success">home.jsp</result>
+			<result name="error" >userInterface.jsp</result>
+		</action>
+
+		<action name="UserCreateAction" class="com.internousdev.vague.action.UserCreateAction" method="execute">
+		<result name="success">userCreateComfirm.jsp</result>
+		</action>
+
+		<action name="UserCreateConfirmAction" class="com.internousdev.action.UserCreateConfirmAction" method="execute">
+		<result name="success">userCreateConfirm.jsp</result>
+		<result name="error">userCreate.jsp</result>
+		</action>
+
+		<action name="UserCreateCompleteAction" class="com.internousdev.action.UserCreateCompleteAction" method="execute">
+		<result name="success">userCreateComplete.jsp</result>
+		</action>
+
+		<!-- 宮崎担当 -->
+
+		<!-- パスワード再設定のAction -->
+		<action name="LogoutAction" class="com.internousdev.vague.action.LogoutAction" method="execute">
+			<result name="success">home.jsp</result>
+		</action>
+
+
+		<action name="UserPasswordUpdateAction" class="com.internousdev.vague.action.UserPasswordUpdateAction" method="execute">
+			<result name="success">userPasswordUpdateConfirm.jsp</result>
+			<result name="error" >userPasswordUpdate.jsp</result>
+			<result name="home" type="redirect">home.jsp</result>
+		</action>
+
+		<action name="UserPasswordUpdateCompleteAction" class="com.internousdev.vague.action.UserPasswordUpdateCompleteAction" method="execute">
+			<result name="success">userPasswordUpdateComplete.jsp</result>
+			<result name="error" >userPasswordUpdateConfirm.jsp</result>
+			<result name="home" type="redirect">home.jsp</result>
+		</action>
+
+
+
+		<!-- ホーム画面に戻るAction -->
+		<action name="GoHomeAction" class="com.internousdev.vague.action.GoHomeAction" method="execute">
+			<result name="success">home.jsp</result>
+		</action>
+
+		<!--  商品を検索するAction -->
+		<action name="ProductSearchAction" class="com.internousdev.vague.action.ProductSearchAction" method="execute">
+			<result name="success">productList.jsp</result>
+		</action>
+
+		<!--  レビューを投稿するAction -->
+		<action name="CreateReviewAction" class="com.internousdev.vague.action.CreateReviewAction" method="execute">
+			<result name="success">createReview.jsp</result>
+			<result name="error">myPage.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<action name="CreateReviewConfirmAction" class="com.internousdev.vague.action.CreateReviewConfirmAction" method="execute">
+			<result name="success">createReviewConfirm.jsp</result>
+			<result name="error">createReview.jsp</result>
+			<result name="home" type="redirect">home.jsp</result>
+		</action>
+
+		<action name="CreateReviewCompleteAction" class="com.internousdev.vague.action.CreateReviewCompleteAction" method="execute">
+			<result name="success">createReviewComplete.jsp</result>
+			<result name="error">errorPage.html</result>
+			<result name="home" type="redirect">home.jsp</result>
+		</action>
+
+		<!-- 投稿したレビュー一覧を表示するAction -->
+		<action name="ReviewMyListAction" class="com.internousdev.vague.action.ReviewMyListAction" method="execute">
+			<result name="success">reviewMyList.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<!-- 管理者画面に推移するAction -->
+		<action name="MasterAction" class="com.internousdev.vague.action.MasterAction" method="execute">
+			<result name="success">master.jsp</result>
+			<result name="error" type="redirect">home.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<!-- 商品情報を変更するAction -->
+		<action name="MasterChangeAction" class="com.internousdev.vague.action.MasterChangeAction" method="execute">
+			<result name="success">masterChange.jsp</result>
+			<result name="error" type="redirect">home.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<action name="MasterChangeConfirmAction" class="com.internousdev.vague.action.MasterChangeConfirmAction" method="execute">
+		 	<interceptor-ref name="fileUpload">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">masterChangeConfirm.jsp</result>
+			<result name="error">masterChange.jsp</result>
+			<result name="home" type="redirect">home.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<action name="MasterChangeCompleteAction" class="com.internousdev.vague.action.MasterChangeCompleteAction" method="execute">
+			<result name="success">masterChangeComplete.jsp</result>
+			<result name="error">errorPage.html</result>
+			<result name="home" type="redirect">home.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<!-- 商品を追加するAction -->
+		<action name="MasterAddAction" class="com.internousdev.vague.action.MasterAddAction" method="execute">
+			<result name="success">masterAdd.jsp</result>
+			<result name="error" type="redirect">home.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<action name="MasterAddConfirmAction" class="com.internousdev.vague.action.MasterAddConfirmAction" method="execute">
+		 	<interceptor-ref name="fileUpload">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">masterAddConfirm.jsp</result>
+			<result name="error">masterAdd.jsp</result>
+			<result name="home" type="redirect">home.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<action name="MasterAddCompleteAction" class="com.internousdev.vague.action.MasterAddCompleteAction" method="execute">
+			<result name="success">masterAddComplete.jsp</result>
+			<result name="error">errorPage.html</result>
+			<result name="home" type="redirect">home.jsp</result>
+			<result name="login">userInterface.jsp</result>
+		</action>
+
+		<!-- 柳沢担当 -->
+ 		<!-- 商品一覧・詳細を表示させるアクション -->
+		<action name="ProductListAction" class="com.internousdev.vague.action.ProductListAction" method="execute">
+		<result name="success">productList.jsp</result>
+		</action>
+		<action name="ProductDetailsAction" class="com.internousdev.vague.action.ProductDetailsAction" method="execute">
+		<result name="success">productDetails.jsp</result>
+		</action>
+
+		<!-- 長谷川担当 -->
+		<!--カートのアクション -->
+		<action name="CartAction" class="com.internousdev.vague.action.CartAction" method="execute">
+		<result name="success">cart.jsp</result>
+		</action>
+
+		<action name="CartInsertAction" class="com.internousdev.vague.action.CartInsertAction" method="execute">
+		<result name="success" type="redirectAction">CartAction</result>
+		</action>
+
+		<action name="CartDeleteAction" class="com.internousdev.vague.action.CartDeleteAction" method="execute">
+		<result name="success" type="redirectAction">CartAction</result>
+		</action>
+
+		<!-- 入山担当 -->
+		<!-- 住所登録のアクション -->
+		<action name="AddressAction" class="com.internousdev.vague.action.AddressAction" method="execute">
+		<result name="success">address.jsp</result>
+		</action>
+
+		<action name="AddressRegiConfirmAction" class="com.internousdev.vague.action.AddressRegiConfirmAction" method="execute">
+		<result name="success">addressRegiConfirm.jsp</result>
+		<result name="error">address.jsp</result>
+		<result name="login">login.jsp</result>
+		</action>
+
+		<action name="AddressRegiCompleteAction" class="com.internousdev.vague.action.AddressRegiCompleteAction" method="execute">
+		<result name="success">addressRegiComplete.jsp</result>
+		</action>
+
+		<!-- 縄田担当 -->
+		<action name="MyPageAction" class="com.internousdev.vague.action.MyPageAction" method="execute">
+		<result name="success">myPage.jsp</result>
+		<result name="error">home.jsp</result>
+		</action>
+
+		<action name="PurchaseHistoryAction" class="com.internousdev.vague.action.PurchaseHistoryAction" method="execute">
+		<result name="success">purchaseHistory.jsp</result>
+		<result name="error">home.jsp</result>
+		</action>
+
+		<!-- 野崎担当 -->
+		<action name="BuyItemAction" class="com.internousdev.vague.action.BuyItemAction" method="execute">
+		<result name="success">buyItem.jsp</result>
+		<result name="error">address.jsp</result>
+		</action>
+
+		<action name="BuyItemConfirmAction" class="com.internousdev.vague.action.BuyItemConfirmAction" method="execute">
+		<result name="success">buyItemConfirm.jsp</result>
+		<result name="error">login.jsp</result>
+		<result name="other">cart.jsp</result>
+		<result name="noaddress">address.jsp</result>
+		</action>
+
+		<action name="BuyItemCompleteAction" class="com.internousdev.vague.action.BuyItemCompleteAction" method="execute">
+		<result name="success">buyItemComplete.jsp</result>
+		<result name="error">purchaseHistory.jsp</result>
+		</action>
+
+
+
+	</package>
+</struts>

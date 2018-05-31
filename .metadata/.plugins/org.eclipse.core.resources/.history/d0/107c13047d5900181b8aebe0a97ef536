@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/mplus1p.css);
+
+
+.master-list-outer {
+	text-align : left;
+}
+
+
+.master-list {
+	width:25%;
+	display : inline-block;
+}
+
+button {
+	margin:10px 0 0 10px ;
+}

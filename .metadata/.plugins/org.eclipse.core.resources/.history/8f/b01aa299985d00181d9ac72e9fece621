@@ -1,0 +1,25 @@
+/**
+ *
+ */
+
+$(function(){
+
+	$('.product-box').hover(
+	function(){
+
+		$('.product-box-top').css('width','100%');
+		$('.product-box-left').css('height','100%');
+		$('.product-box-right').css('height','100%');
+		$('.product-box-bottom').css('width','100%');
+
+	},
+	function(){
+
+
+
+	});
+
+
+
+
+});

@@ -1,0 +1,5 @@
+package com.internous.wheels.action;
+
+public class LoginAction {
+
+}

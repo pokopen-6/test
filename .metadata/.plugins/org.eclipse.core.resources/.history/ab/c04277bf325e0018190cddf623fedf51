@@ -1,0 +1,11 @@
+$(function() {
+
+
+  // フォーカス
+  $('#detailPrice').window('onload', function(){
+    var num = $(this).val();
+    num = num.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    $(this).val(num);
+  });
+
+});

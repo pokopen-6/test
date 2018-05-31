@@ -1,0 +1,17 @@
+package com.internousdev.wood.dto;
+
+public class ProductDTO {
+	private int id;
+	private int productId;
+	private int categoryId;
+	private int price;
+	private int productPrice;
+	private int product_count;
+
+	private int stock;
+	private int status;
+	private String productName;
+	private String productDescription;
+	private String imageFilePath;
+	private String imageFileName;
+

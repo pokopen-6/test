@@ -1,0 +1,94 @@
+package com.internousdev.wheels.dto;
+
+public class ProductDTO {
+	private int id;
+	private int product_id;
+	private int category_id;
+	private int price;
+	private int product_price;
+	private int product_count;
+
+	private int stock;
+	private int status;
+	private String product_name;
+	private String product_description;
+	private String image_file_path;
+	private String image_file_name;
+
+	public int getId(){
+		return id;
+	}
+	public void setId(int id){
+		this.id = id;
+	}
+	public int getProduct_Id(){
+		return product_id;
+	}
+	public void setProduct_id(int product_id){
+		this.product_id = product_id;
+	}
+	public int getCategory_id(){
+		return category_id;
+	}
+	public void setCategory_id(int category_id){
+		this.category_id = category_id;
+	}
+	public int getPrice(){
+		return price;
+	}
+	public void setPrice(int price){
+		this. price = price;
+	}
+	public int getStock(){
+		return stock;
+	}
+	public void setStock(int stock){
+		this.stock = stock;
+	}
+	public int getStatus(){
+		return status;
+	}
+	public void setStatus(int status){
+		this.status = status;
+	}
+	public String getProduct_name(){
+		return product_name;
+	}
+	public void setProduct_name(String product_name){
+		this.product_name = product_name;
+	}
+	public String getProduct_description(){
+		return product_description;
+	}
+	public void setProduct_descrption(String product_description){
+		this.product_description = product_description;
+	}
+	public String getImage_file_path(){
+		return image_file_path;
+	}
+	public void setImage_file_path(String image_file_path){
+		this.image_file_path = image_file_path;
+	}
+	public String getImage_file_name(){
+		return image_file_name;
+	}
+	public void setImage_file_name(String image_file_name){
+		this.image_file_name = image_file_name;
+	}
+
+	public int getProductCount(){
+		return product_count;
+	}
+	public void setProductCount(int product_count) {
+		this.product_count = product_count;
+
+	}
+	public int getProductPrice(){
+		return product_price;
+	}
+	public void setProductPrice(int product_price){
+		this.product_price = product_price;
+	}
+
+
+}

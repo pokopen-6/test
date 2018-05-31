@@ -1,0 +1,34 @@
+package com.internous.wheels.action;
+
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.ArrayList;
+
+import org.apache.struts2.interceptor.SessionAware;
+import com.internous.wheels.dao.LoginDAO;
+import com.internous.wheels.dto.LoginDTO;
+import com.opensymphony.xwork2.ActionSupport;
+
+public class BuyItemAction extends ActionSupport implements SessionAware {
+
+	private String userId;
+	private String result;
+	private LoginDTO loginDTO = new LoginDTO();
+	private Map<String,Object> session;
+
+	public String execute() throws SQLException {
+		if(session.containsKey("loginDTO")){
+			result = SUCCESS;
+
+			loginDTO = (LoginDTO)session.get("loginDTO");
+			userId = loginDTO.getUserId();
+		}else{
+			result = LOGIN;
+		}
+		return result;
+	}
+	@Override
+	public void setSession(Map<string , Object>session) {
+		this.session = session;
+	}
+}

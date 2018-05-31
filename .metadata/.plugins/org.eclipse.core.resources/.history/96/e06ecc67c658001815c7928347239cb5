@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/mplus1p.css);
+
+
+/*======== 商品一覧のcss ===========*/
+.product-box-outer {
+
+	text-align : center;
+
+
+}
+
+.productt-box {
+
+	width : 30%;
+	margin : 0 1%;
+	display : inline-block;
+	transition:all 0.3s;
+
+}
+.product-box:hover {
+	top:-10px;
+	left:-10px;
+	box-shadow:10px 10px #87cefa;
+	transition:all 0.3s;
+}
+.proName {
+	font-size : 15px;
+}
+
+.proName2 {
+	font-size:12px;
+}
+
+.proPrice {
+	font-size:15px;
+}
+.pageNum {
+	font-size:15px;
+}
+
+/*========= 商品詳細のcss ==========*/
+
+.suggest-box {
+	text-align : center;
+	width : 30%;
+	margin : 0 1%;
+	display : inline-block;
+
+}

@@ -1,0 +1,142 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="imagetoolbar" content="no"/>
+<title>商品一覧</title>
+<style type="text/css">
+
+
+</style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="./js/jquery-1.8.2.min.js"></script>
+</head>
+<body>
+<!-- ヘッダーのインクルード  -->
+<%-- <jsp:include page="include_header.jsp" /> --%>
+
+<!-- 一覧ボタン押下 -->
+<s:iterator value="displayList">
+<div class="itemList">
+		<!-- 商品画像（オンクリックで詳細にジャンプ） -->
+		<a href="<s:url action='ProductDetailsAction' />?productId=<s:property value='productId'/>">
+		<img class="image" src="<s:property value='imageFilePath'/>"  alt="Photo" width="200" height="170"><br>
+		</a>
+		<!-- 商品名 -->
+		<s:property value="productName" />
+		<br>
+		<!-- 商品名かな -->
+		<s:property value="productNameKana"/>
+		<br>
+		<%-- <!-- 価格 -->
+		<s:property value="price"/>
+		<br> --%>
+</div>
+</s:iterator>
+<!-- リストにデータが存在するとき  -->
+
+	<s:if test="number > 8">
+		<s:if test="listFlg == 1">
+			<!--  1ページ目 -->
+			<s:if test="pageNum==1">
+				<span>&laquo;<s:text name="戻る" /></span>
+			</s:if>
+			<!-- ページネート:1ページ目以外 -->
+		<s:else>
+			<a
+				href='<s:url action="ProductListAction">
+				<s:param name="pageNum" value="pageNum-1" />
+				<s:param name="listFlg" value="listFlg" />
+				</s:url>'><span>&laquo;<s:text name="戻る" /></span></a>
+		</s:else>
+		<!-- 最終ページ -->
+		<s:property value="pageNum"/>
+			<s:if test="pageNum == maxPage">
+				<s:text name="進む" />&raquo;
+			</s:if>
+		<!-- 最終ページ以外 -->
+		<s:else>
+			<a
+				href='<s:url action="ProductListAction">
+				<s:param name="pageNum" value="pageNum+1"/>
+				<s:param name="listFlg" value="listFlg" />
+				</s:url>'><span>&laquo;<s:text name="戻る" /></span></a>
+		</s:else>
+		</s:if>
+	</s:if>
+
+
+<!-- 商品検索結果 -->
+	<h1>
+		<s:if test="categoryId == 1">
+			<span>椅子</span></s:if>
+		<s:if test="categoryId == 2">
+			<span>ソファ</span></s:if>
+		<s:if test="categoryId == 3">
+			<span>照明</span></s:if>
+		<s:if test="categoryId == 4">
+			<span>テーブル</span></s:if>
+	</h1>
+	<!-- 検索時のメッセージ -->
+	<s:if test="productSearchDTOList.isEmpty()">
+		<s:iterator value="msgList">
+			<h1>検索キーワード：<s:property />
+			</h1>
+		</s:iterator>
+	</s:if>
+	<s:if test="number == 0">
+		<h1>検索結果がありませんでした。</h1>
+	</s:if>
+
+	<s:iterator value="searchList">
+		<a
+			href='<s:url action="ProductDetailsAction">?productId=<s:param name="productId" value="%{product_id}" /></s:url>'>
+			<img class="image" src="<s:property value='imageFilePath'/>"  alt="Photo" width="200" height="170"><br>
+		</a>
+		<!-- 商品名 -->
+		<s:property value="productName" />
+		<br>
+		<!-- 商品名かな -->
+		<s:property value="productNameKana"/>
+		<br>
+		<%-- <!-- 価格 -->
+		<s:property value="price"/>
+		<br> --%>
+	</s:iterator>
+	<!-- リストにデータが存在するとき -->
+	<s:if test="number > 8">
+		<s:if test="serchFlg == 1">
+			<!--  1ページ目 -->
+			<s:if test="pageNum==1">
+				<span>&laquo;<s:text name="戻る" /></span>
+			</s:if>
+			<!-- ページネート:1ページ目以外 -->
+		<s:else>
+			<a
+				href='<s:url action="ProductSearchAction">
+				<s:param name="pageNum" value="pageNum-1" />
+				<s:param name="listFlg" value="listFlg" />
+				</s:url>'><span>&laquo;<s:text name="戻る" /></span></a>
+		</s:else>
+		<!-- 最終ページ -->
+		<s:property value="pageNum"/>
+			<s:if test="pageNum == maxPage">
+				<s:text name="進む" />&raquo;
+			</s:if>
+		<!-- 最終ページ以外 -->
+		<s:else>
+			<a
+				href='<s:url action="ProductSearchAction">
+				<s:param name="pageNum" value="pageNum+1"/>
+				<s:param name="listFlg" value="listFlg" />
+				</s:url>'><span>&laquo;<s:text name="戻る" /></span></a>
+		</s:else>
+		</s:if>
+	</s:if>
+
+</body>
+</html>

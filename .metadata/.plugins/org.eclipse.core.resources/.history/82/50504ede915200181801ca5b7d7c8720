@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- <constant name="struts.ui.theme" value="simple" />  -->
+	<!-- 開発者モード(デバッグしたい時にはコメント外してください。ユーザーのエラーページが無効にできます) -->
+	<constant name="struts.devMode" value="true" />
+	<package name="com.internousdev.vague.action" extends="struts-default">
+
+		<!-- ホーム画面に戻るAction
+		<action name="GoHomeActon" class="com.internousdev.vague.action.GoHomeActon" method="execute">
+			<result name="success">home.jsp</result>
+		</action>
+
+		商品を検索するAction
+		<action name="ProductSearchAction" class="com.internousdev.vague.action.ProductSearchAction" method="execute">
+			<result name="success">home.jsp</result>
+			<result name="master">master.jsp</result>
+		</action>
+
+		レビューを投稿するAction
+		<action name="CreateReviewAction" class="com.internousdev.vague.action.CreateReviewAction" method="execute">
+			<result name="success">createReview.jsp</result>
+			<result name="error">myPage.jsp</result>
+		</action>
+
+		<action name="CreateReviewConfirmAction" class="com.internousdev.vague.action.CreateReviewConfirmAction" method="execute">
+			<result name="success">createReviewConfirm.jsp</result>
+			<result name="error">createReview.jsp</result>
+			<result name="home" type="redirect">home.jsp</result>
+		</action>
+
+		<action name="CreateReviewCompleteAction" class="com.internousdev.vague.action.CreateReviewCompleteAction" method="execute">
+			<result name="success">createReviewComplete.jsp</result>
+			<result name="error">errorPage.html</result>
+		</action> -->
+<!--
+		投稿したレビュー一覧を表示するAction
+		<action name="ReviewMyListAction" class="com.internousdev.vague.action.ReviewMyListAction" method="execute">
+			<result name="success">reviewMyList.jsp</result>
+			<result name="home" type="redirect">home.jsp</result>
+		</action> -->
+
+		<!-- 管理者画面に推移するAction
+		<action name="MasterAction" class="com.internousdev.vague.action.MasterAction" method="execute">
+			<result name="success">master.jsp</result>
+			<result name="error" type="redirect">home.jsp</result>
+		</action> -->
+
+		<!-- 商品情報を変更するAction
+		<action name="MasterChangeAction" class="com.internousdev.vague.action.MasterChangeAction" method="execute">
+			<result name="success">masterChange.jsp</result>
+		</action>
+
+		<action name="MasterChangeConfirmAction" class="com.internousdev.vague.action.MasterChangeConfirmAction" method="execute">
+		 	<interceptor-ref name="fileUpload">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg
+                </param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">masterChangeConfirm.jsp</result>
+			<result name="error">masterChange.jsp</result>
+		</action> -->
+
+ 		<!-- 商品一覧・詳細を表示させるアクション -->
+		<action name="ProductListAction" class="com.internousdv.vague.action.ProductListAction" method="execute">
+		<result name="success">productList.jsp</result>
+		</action>
+		<action name="ProductDetailsAction" class="com.internousdev.vague.ProductDetailsAction" method="execute">
+		<result name="success">productDetails/jsp</result>
+		</action>
+
+	</package>
+</struts>

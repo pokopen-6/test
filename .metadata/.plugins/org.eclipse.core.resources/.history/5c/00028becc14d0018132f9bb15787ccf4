@@ -1,0 +1,5 @@
+package com.internousdev.vague.dto;
+
+public class ProductDTO {
+
+}
