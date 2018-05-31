@@ -1,0 +1,14 @@
+
+.main {
+	height:auto;
+	width:100%;
+	position:relative;
+	z-index:-1;
+	background-color:#ededed;
+}
+.container {
+	height:auto;
+	width:90%;
+}
+
+

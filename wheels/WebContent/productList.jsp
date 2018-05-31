@@ -16,6 +16,11 @@
 
 	<s:property value="productName"/>
 
+	<a href="<s:url action='ProductDetailsAction'><s:param name="productId" value="productId" /></s:url>">
+	<img src="<s:property value='imageFilePath'/>" alt="Photo" width="250" height="220"></a>
+
+	<s:property value="releaseCompany"/>
+
 
 </s:iterator>
 

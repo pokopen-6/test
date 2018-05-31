@@ -24,7 +24,6 @@ INDEX VERSION 1.127+C:\Users\internousdev\Desktop\workspace\workspace-yanagisawa
 2899113458.index
 3574913544.index
 1148464110.index
-2229032863.index
 175865013.index
 3738199398.index
 2535902727.index

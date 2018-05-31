@@ -30,7 +30,10 @@ public class ProductListDAO {
 			dto.setProductPrice(rs.getInt("price"));
 			dto.setImageFilePath(rs.getString("image_file_path"));
 			dto.setImageFileName(rs.getString("image_file_name"));
+			dto.setReleaseCompany(rs.getString("release_company"));
 			productList.add(dto);
+
+
 			}
 			} catch(Exception e){
 				throw new RuntimeException (e);

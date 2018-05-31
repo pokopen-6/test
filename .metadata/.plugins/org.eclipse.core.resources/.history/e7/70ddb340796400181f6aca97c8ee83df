@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>商品一覧</title>
+</head>
+<body>
+
+<jsp:include page="include_header.jsp"/>
+
+
+<s:iterator value="#session.ProductList">
+	<ul>
+	<li>
+	<s:property value="productName"/>
+	</li>
+	<%-- <li>
+	<s:property value="imageFilePath"/>
+	</li> --%>
+	<li>
+	<s:property value="releaseCompany"/>
+	</li>
+	</ul>
+
+</s:iterator>
+
+
+
+
+
+<jsp:include page="include_footer.jsp"/>
+
+</body>
+</html>

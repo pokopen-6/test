@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>商品詳細画面</title>
+</head>
+<body>
+<jsp:include page="include_header.jsp"/>
+
+
+<form action="BuyItemAction">
+<img src="<s:property value='#session.DetailProductDTO.imageFilePath'/>" alt="photo">
+<s:property value="#session.DetailProductDTO.productName"/>
+<s:property value="#session.DetailProductDTO.releaseCompany"/>
+<s:property value="#session.DetailProductDTO.price"/>
+<s:property value="#session.DetailProductDTO.productDescription"/>
+
+<input type="submit" valu="購入画面へ">
+</form>
+
+<jsp:include page="include_footer.jsp"/>
+</body>
+</html>

@@ -42,11 +42,11 @@ public class ProductListAction extends ActionSupport implements SessionAware {
 		String result = SUCCESS;
 		productList = productListDAO.getProductInfo();
 
-		number = productList.size();
 
 
 
-		session.put("ProductList",productList.size());
+
+		session.put("ProductList",productListDAO.getProductInfo());
 
 
 

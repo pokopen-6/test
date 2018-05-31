@@ -1,0 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<jsp:include page="include_header.jsp"/>
+
+
+
+<img src="<s:property value='#session.ProductList.imageFilePath'/>" alt="photo">
+<s:property value="#session.ProductList.productName"/>
+<s:property value="#session.ProductList.releaseCompany"/>
+<s:property value="#session.ProductList.price"/>
+<s:property value="#session.ProductList.productDescription"/>
+
+
+<jsp:include page="include_footer.jsp"/>
+</body>
+</html>
